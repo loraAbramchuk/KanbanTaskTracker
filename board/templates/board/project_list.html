@@ -1,0 +1,17 @@
+{% extends 'board/base.html' %}
+{% block content %}
+  <h2>Мои проекты</h2>
+  {% if projects %}
+    <ul class="list-group">
+      {% for project in projects %}
+        <li class="list-group-item">
+          <a href="{% url 'project_detail' project.id %}">{{ project.name }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>У вас пока нет проектов.</p>
+  {% endif %}
+
+  <a href="{% url 'create_project' %}" class="btn btn-success mt-3">+ Новый проект</a>
+{% endblock %}
